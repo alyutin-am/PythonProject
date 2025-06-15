@@ -1,8 +1,8 @@
-from masks import get_mask_card_number
-from masks import get_mask_account
+from masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card_inform: str) -> str:
+    """Функция маскировки номера карты/счета с выводом карты/счета"""
     list_card_inform = card_inform.split()
     card_name = ""
     card_account = ""
@@ -20,5 +20,6 @@ def mask_account_card(card_inform: str) -> str:
 
 
 def get_date(date_time: str) -> str:
+    """Функция вывода даты"""
     date = date_time[8:10] + "." + date_time[5:7] + "." + date_time[:4]
     return date
