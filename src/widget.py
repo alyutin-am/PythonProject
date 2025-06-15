@@ -19,10 +19,6 @@ def mask_account_card(card_inform: str) -> str:
     return f"{card_name}{mask_number}"
 
 
-def get_date():
-    pass
-
-
-card_inform = "Maestro 1596837868705199"
-result = mask_account_card(card_inform)
-print(result)
+def get_date(date_time: str) -> str:
+    date = date_time[8:10] + "." + date_time[5:7] + "." + date_time[:4]
+    return date
