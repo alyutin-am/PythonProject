@@ -10,5 +10,3 @@ def get_mask_account(mask_account: str) -> str:
     if len(mask_account) != 20:
         return "Неверный номер счета"
     return f"**{mask_account[-4:]}"
-
-"Check puch to github"
