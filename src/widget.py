@@ -23,3 +23,5 @@ def get_date(date_time: str) -> str:
     """Функция вывода даты"""
     date = date_time[8:10] + "." + date_time[5:7] + "." + date_time[:4]
     return date
+
+"check push to github"
