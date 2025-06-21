@@ -1,6 +1,5 @@
-def filter_by_state(dict: dict, state='EXECUTED') -> dict:
+def filter_by_state(dict: list, state='EXECUTED') -> list:
     """Функция возвращает новый список словарей, содержащий только те словари, у которых ключ соответствует указанному значению, по умолчанию 'EXECUTED'"""
-    pass
 
 
 def sort_by_date(sort_list: list, reverse=True) -> list:
