@@ -10,10 +10,10 @@ def filter_by_state(dictionaries: list, state: str = "EXECUTED") -> list:
     return new_data
 
 
-def sort_by_date(unsort_date: list, sort: bool = True) -> list:
+def sort_by_date(dictionaries: list, sort: bool = True) -> list:
     """
     Функция должна возвращать новый список, отсортированный по дате,
     имеет возможность сортировки по возрастанию или убыванию
     """
-    sort_date = sorted(unsort_date, key=lambda unsort_date: unsort_date["date"], reverse=sort)
-    return sort_date
+    sort_dictionaries = sorted(dictionaries, key=lambda unsort_date: unsort_date["date"], reverse=sort)
+    return sort_dictionaries
