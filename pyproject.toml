@@ -37,8 +37,8 @@ line-length = 119
 exclude = '''
 (
   /(
-      \.eggs         # Исключить несколько общих каталогов
-    | \.git          # в корне проекта
+      \.eggs
+    | \.git
     | \.hg
     | \.mypy_cache
     | \.tox
