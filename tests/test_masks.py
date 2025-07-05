@@ -24,6 +24,9 @@ def test_get_mask_card_number(value, expected):
     ('73654108430135874305', '**4305'),
     ('7365410843013587lala', 'Неверный номер счета'),
     ('7365410843013587', 'Неверный номер счета'),
+    ('', 'Неверный номер счета'),
+    ('edyatlikoshimoshek', 'Неверный номер счета'),
+    ('не ну а вдруг', 'Неверный номер счета'),
 ])
 def test_get_mask_account(value,expected):
     assert get_mask_account(value) == expected
