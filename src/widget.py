@@ -16,7 +16,10 @@ def mask_account_card(card_inform: str) -> str:
         mask_number = get_mask_account(card_account)
     else:
         mask_number = get_mask_card_number(card_account)
-    return f"{card_name}{mask_number}"
+    if "Неверный номер карты" in mask_number or "Неверный номер счета" in mask_number:
+        return "Введены не корректные данные, пожалуйста, исправьте ошибку и попробуйте снова"
+    else:
+        return f"{card_name}{mask_number}"
 
 
 def get_date(date_time: str) -> str:
