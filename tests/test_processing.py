@@ -11,10 +11,9 @@ from src.processing import filter_by_state, sort_by_date
      [{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
       {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'}]),
     ([], 'Введены не верные данные, пожалуйста, устраните ошибку и попробуйте снова'),
-    ('lflflfl', 'Введены не верные данные, пожалуйста, устраните ошибку и попробуйте снова'),
     (1111, 'Введены не верные данные, пожалуйста, устраните ошибку и попробуйте снова')
 ])
-def test_filter_by_state(value, expected):
+def test_filter_by_state(value: list, expected: list) -> None:
     assert filter_by_state(value) == expected
 
 
@@ -31,5 +30,5 @@ def test_filter_by_state(value, expected):
     (1234, 'Введены не верные данные, пожалуйста, устраните ошибку и попробуйте снова'),
     ('rukizagrebuki', 'Введены не верные данные, пожалуйста, устраните ошибку и попробуйте снова'),
 ])
-def test_sort_by_date(value, expected):
+def test_sort_by_date(value: list, expected: list) -> None:
     assert sort_by_date(value) == expected

@@ -21,7 +21,7 @@ from src.masks import get_mask_account, get_mask_card_number
     ('9999999999999999', '9999 99** **** 9999'),
     ('0000000000000000', '0000 00** **** 0000')
 ])
-def test_get_mask_card_number(value, expected):
+def test_get_mask_card_number(value: str, expected: str) -> None:
     assert get_mask_card_number(value) == expected
 
 
@@ -44,5 +44,5 @@ def test_get_mask_card_number(value, expected):
     ('35383033474447895560', '**5560'),
     ('73654108430135874305', '**4305'),
 ])
-def test_get_mask_account(value, expected):
+def test_get_mask_account(value: str, expected: str) -> None:
     assert get_mask_account(value) == expected
