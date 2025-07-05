@@ -23,8 +23,8 @@ def sort_by_date(dictionaries: list, sort: bool = True) -> list:
     """
     if isinstance(dictionaries, list) and isinstance(sort, bool):
         if len(dictionaries) != 0:
-           sort_dictionaries = sorted(dictionaries, key=lambda unsort_date: unsort_date["date"], reverse=sort)
-           return sort_dictionaries
+            sort_dictionaries = sorted(dictionaries, key=lambda unsort_date: unsort_date["date"], reverse=sort)
+            return sort_dictionaries
         else:
             return "Введены не верные данные, пожалуйста, устраните ошибку и попробуйте снова"
     else:
