@@ -1,4 +1,7 @@
-def filter_by_state(dictionaries: list, state: str = "EXECUTED") -> list:
+from typing import Union
+
+
+def filter_by_state(dictionaries: list, state: str = "EXECUTED") -> Union[list, str]:
     """
     Функция возвращает новый список словарей, содержащий только те словари,
     у которых ключ соответствует указанному значению, по умолчанию 'EXECUTED'
@@ -16,7 +19,7 @@ def filter_by_state(dictionaries: list, state: str = "EXECUTED") -> list:
         return "Введены не верные данные, пожалуйста, устраните ошибку и попробуйте снова"
 
 
-def sort_by_date(dictionaries: list, sort: bool = True) -> list:
+def sort_by_date(dictionaries: list, sort: bool = True) -> Union[list, str]:
     """
     Функция должна возвращать новый список, отсортированный по дате,
     имеет возможность сортировки по возрастанию или убыванию
