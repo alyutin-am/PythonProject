@@ -23,7 +23,7 @@ def log(filename=None):
                     f"{func.__name__} error: {error}. Inputs: {args}, {kwargs}. Start time: {time_start}, "
                     f"End time: {time_finish}"
                 )
-            if not filename is None:
+            if filename:
                 with open(filename, "a") as f:
                     f.write(log_message + "\n")
             else:
@@ -33,12 +33,3 @@ def log(filename=None):
         return wrapper
 
     return decorator
-
-
-
-def function_for_test(a, b):
-    result = a / b
-    print(result)
-    return result
-
-function_for_test = log(function_for_test(3,3))
