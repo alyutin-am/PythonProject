@@ -1,5 +1,7 @@
 import pytest
 
+from typing import Any, Generator, Iterator
+
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
@@ -20,12 +22,12 @@ from src.generators import card_number_generator, filter_by_currency, transactio
         ),
     ],
 )
-def test_card_number_generator(start, stop, expected):
+def test_card_number_generator(start: int, stop: int, expected: str) -> None:
     result = list(card_number_generator(start, stop))
     assert result == expected
 
 
-def test_filter_by_currency():
+def test_filter_by_currency() -> None:
     transactions = [
         {
             "id": 939719570,
@@ -120,7 +122,7 @@ def test_filter_by_currency():
         ]
     ],
 )
-def test_transaction_descriptions(expected):
+def test_transaction_descriptions(expected: str) -> None:
     transactions = [
         {
             "id": 970157810,
