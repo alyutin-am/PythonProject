@@ -1,17 +1,18 @@
+from typing import Optional, Callable, TypeVar, Any
+import functools
 import datetime
 
-import functools
-
-from typing import Optional, Callable
+T = TypeVar("T")
 
 
-def log(filename: Optional[str] = None) -> Callable:
-    def decorator(func):
+def log(filename: Optional[str] = None) -> Callable[[Callable[..., T]], Callable[..., T]]:
+    def decorator(func: Callable[..., T]) -> Callable[..., T]:
         @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            result = None
-            time_start = None
-            time_finish = None
+        def wrapper(*args: Any, **kwargs: Any) -> T:
+            result: Optional[T] = None
+            time_start: Optional[datetime.datetime] = None
+            time_finish: Optional[datetime.datetime] = None
+
             try:
                 time_start = datetime.datetime.now()
                 result = func(*args, **kwargs)
