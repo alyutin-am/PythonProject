@@ -1,8 +1,10 @@
-from decorators import log
-import pytest
 import datetime
-from unittest.mock import patch
 from pathlib import Path
+from unittest.mock import patch
+
+import pytest
+
+from decorators import log
 
 
 def test_log_decorator_without_file(capsys: pytest.CaptureFixture[str]) -> None:
