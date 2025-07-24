@@ -6,6 +6,9 @@ T = TypeVar("T")
 
 
 def log(filename: Optional[str] = None) -> Callable[[Callable[..., T]], Callable[..., T]]:
+    """Декоратор автоматически регистрирует детали выполнения функций: время вызова, имя функции,
+    передаваемые аргументы, результат выполнения и информация об ошибках"""
+
     def decorator(func: Callable[..., T]) -> Callable[..., T]:
         @functools.wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> T:

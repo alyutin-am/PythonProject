@@ -1,9 +1,7 @@
 from decorators import log
 import pytest
 import datetime
-import functools
-from typing import Optional, Callable
-from unittest.mock import patch, mock_open
+from unittest.mock import patch
 from pathlib import Path
 
 
