@@ -1,15 +1,25 @@
-import json
+import os
+from dotenv import load_dotenv
 import requests
+import json
 
-headers = {
-    "apikey" : "G1D01mi8bZDRstqfKCeK6thvUvTl37LU"
-}
 
-url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={code_of_currency}&amount={dict_amount}"
+EXCHANGE_RATES_API_KEY = os.getenv("API_KEY")
 
-def sum_transaction(operations: dict) -> float:
-    dict_amount = operations["amount"]
-    if operations["code"] != "RUB":
-        code_of_currency = operations["code"]
-        try:
-            result = requests.request("convert", url, headers=headers, data=)
+
+def convert_to_rub(transaction: dict) -> float:
+    """Функция конвертации валюты (принимает на вход транзакцию и возвращает сумму транзакций
+    (amount) в рублях, тип данных "float". Если транзакция была а "USD" или "EUR" происходит
+    обращение к внешнему API)
+    """
+    amount = transaction["operationAmount"]["amount"]
+    currency_code = transaction["operationAmount"]["currency"]["code"]
+    if currency_code == "RUB":
+        return float(amount)
+    url = "https://api.apilayer.com/exchangerates_data/convert"
+    params = {"to": "RUB", "from": currency_code, "amount": amount}
+    headers = {"apikey": EXCHANGE_RATES_API_KEY}
+    response = requests.get(url, params=params, headers=headers)
+    response.raise_for_status()
+    data = response.json()
+    return float(data["result"])
