@@ -1,20 +1,19 @@
 import json
+from typing import Any, Dict, List
 
 
-def get_transactions(operations: json) -> list:
-    """
-    Функция принимает на вход путь до JSON-файла и возвращает список словарей с данными о финансовых транзакциях.
-    Если файл пустой, содержит не список или не найден, функция возвращает пустой список.
-    """
+def get_transactions_dictionary(file_path: str) -> List[Dict[str, Any]]:
+    """A function that loads transactions from a JSON file and returns them as a dictionary."""
+    # Path to the file with transactions
     try:
-        try:
-            with open(operations, encoding="utf-8") as json_file:
-                result = json.load(json_file)
-                if type(result) is list:
-                    return result
-                else:
-                    return []
-        except json.JSONDecodeError:
-            return []
-    except FileNotFoundError:
+        # Opening the file and loading JSON data
+        with open(file_path, "r", encoding="utf-8") as operations:
+            transactions = json.load(operations)
+            if not isinstance(transactions, list):
+                return []
+
+            return transactions  # Return the list of transactions
+
+    except (json.JSONDecodeError, FileNotFoundError, ValueError):
+        # In case of error, return an empty list
         return []
