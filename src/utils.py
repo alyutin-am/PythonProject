@@ -1,6 +1,7 @@
 import json
 import logging
 from pathlib import Path
+from typing import Any, Dict, List
 
 LOG_DIR = Path(__file__).resolve().parent.parent / "Logs"
 LOG_DIR.mkdir(exist_ok=True)
@@ -39,4 +40,19 @@ def get_transactions(operations: str | Path) -> list:
             return []
     except FileNotFoundError:
         logger.error("Файл не найден: %s", operations)
+        return []
+def get_transactions_dictionary(file_path: str) -> List[Dict[str, Any]]:
+    """A function that loads transactions from a JSON file and returns them as a dictionary."""
+    # Path to the file with transactions
+    try:
+        # Opening the file and loading JSON data
+        with open(file_path, "r", encoding="utf-8") as operations:
+            transactions = json.load(operations)
+            if not isinstance(transactions, list):
+                return []
+
+            return transactions  # Return the list of transactions
+
+    except (json.JSONDecodeError, FileNotFoundError, ValueError):
+        # In case of error, return an empty list
         return []
