@@ -1,8 +1,8 @@
-import pandas as pd
 import logging
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import Any, Dict, List, cast
 
+import pandas as pd
 
 LOG_DIR = Path(__file__).resolve().parent.parent / "Logs"
 LOG_DIR.mkdir(exist_ok=True)
@@ -28,7 +28,7 @@ def read_csv_transactions(file_path: str) -> List[Dict[str, Any]]:
     logger.info(f"Попытка чтения CSV файла: {file_path}")
     try:
         df = pd.read_csv(file_path)
-        transactions = df.to_dict(orient='records')
+        transactions: List[Dict[str, Any]] = cast(List[Dict[str, Any]], df.to_dict(orient='records'))
         if not transactions:
             logger.warning(f"CSV файл пуст: {file_path}")
             return []
@@ -53,7 +53,7 @@ def read_excel_transactions(file_path: str) -> List[Dict[str, Any]]:
     logger.info(f"Попытка чтения Excel файла: {file_path}")
     try:
         df = pd.read_excel(file_path)
-        transactions = df.to_dict(orient='records')
+        transactions: List[Dict[str, Any]] = cast(List[Dict[str, Any]], df.to_dict(orient='records'))
         if not transactions:
             logger.warning(f"Excel файл пуст: {file_path}")
             return []
